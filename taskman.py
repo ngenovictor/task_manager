@@ -10,6 +10,7 @@ import datetime
 
 def main(args):
     '''
+    CMD program to help a boot camper to track changess
 
     :param sys:
     :return:
@@ -25,6 +26,7 @@ def main(args):
     tasknames = tasks.keys()
     if len(args) == 1 and args[0] == 'taskman.py':
         print('Usage Error. Missing Arguments')
+        return 'Usage Error. Missing Arguments'
     elif len(args) == 2 and args[0] == 'taskman.py' and args[1] == '-h':
         print('Usage: taskman.py taskname action\n\n'
               'Where taskname is the particular task.\n\n'
