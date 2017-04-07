@@ -1,1 +1,1 @@
-{'Programming Logic': 1, 'Agile Methodology': 0, 'Version Control': 0}
+{"Programming Logic": 0, "Agile Methodology": 0, "Version Control": 0}
