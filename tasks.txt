@@ -1,0 +1,3 @@
+1. Version Control
+2. Agile Methodology
+3. Programming Logic
