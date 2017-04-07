@@ -1,4 +1,6 @@
 import sys
+import contextlib
+import datetime
 
 
 
@@ -11,22 +13,24 @@ def main(args):
     '''
 
     actions = ['tasks', 'status', 'completed', 'partDone']
-    try:
-        with contextlib.closing(shelve.open(data, 'c')) as data:
-            tasks = data['tasklist']
-            time = data['time']
-            tasknames = tasks.keys()
-
-    except:
-        print('No data present! Kinldy import your tasks first')
-        return
+    # try:
+    #     with contextlib.closing(shelve.open(data, 'c')) as data:
+    #         tasks = data['tasklist']
+    #         time = data['time']
+    #         tasknames = tasks.keys()
+    #
+    # except:
+    #     print('No data present! Kinldy import your tasks first')
+    #     return
+    tasks = {'Version Control': 0, 'Agile Methodology': 0, 'Programming Logic': 0}
+    tasknames = tasks.keys()
 
     if len(args) == 1 and args[0] == 'taskman.py' and args[1] == '-h':
         print('Usage: taskman.py taskname action\n\n'
               'Where taskname is the particular task.\n\n'
               '        Action is the command (status, or % complete)')
         return None
-    elif len(args) == 2 and args[2] in actions:
+    elif len(args) == 2 and args[1] in actions:
         actions(tasks, args)
 
     elif len(args) == 2 and args[1] in tasknames :
@@ -54,9 +58,7 @@ def actions(tasks, args):
         print(tasks[args.keys()])
 
     elif args[2] == 'status':
-        # print(tasks[args])
-
-
+        print(tasks[args])
 
 
 
