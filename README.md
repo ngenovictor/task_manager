@@ -1,3 +1,7 @@
 # task_manager
 A command line application to track progress of tasks completed.
-Adams Kariuki
+
+Team Members
+1. Adams Kariuki
+2. Victor Ngeno
+
