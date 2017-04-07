@@ -51,7 +51,8 @@ def actions(tasks, args):
     :return:
     '''
     if args[1] == 'jobs':
-        print(tasks)
+    	for course in tasks:
+    		print(course)
 
     elif args[1] == 'status':
         statusEvaluator(tasks)
