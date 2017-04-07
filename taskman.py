@@ -59,14 +59,9 @@ def actions(tasks, args):
 def statusEvaluator(tasks):
     f = open('list.txt', 'r')
     w = f.read()
+    f.close()
     print(w)
-    f.close
 
-    for value in w:
-        i = 0
-        if value == 1:
-            i += 1
-    print('{} Tasks out {} Completed!'.format(i, len(tasks.values())))
 
 
 def completed(tasks, arg):
