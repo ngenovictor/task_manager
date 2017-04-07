@@ -23,14 +23,17 @@ def main(args):
     tasks = json.loads(w1)
     tasknames = tasks.keys()
     if len(args) == 1 and args[0] == 'taskman.py':
-        print('Usage Error. Missing Arguments')
+        print('\nUsage Error. Missing Arguments')
+    
     elif len(args) == 2 and args[0] == 'taskman.py' and args[1] == '-h':
-        print('Usage: taskman.py taskname action\n\n'
+        print('\nUsage: taskman.py taskname action\n\n'
               'Where taskname is the particular task.\n\n'
               '        Action is the command (status, not completed, complete)')
+    
     elif len(args) == 2 and args[1] in action:
         actions(tasks, args)
 
+    
     elif len(args) == 3 and args[1] in tasknames and args[2] in action:
         taskevaluator(tasks, args)
 
@@ -51,16 +54,28 @@ def actions(tasks, args):
     :return:
     '''
     if args[1] == 'jobs':
-        print(tasks)
+        print("\nCourses: ")
+        print("----------------")
+        for course in tasks:
+            print(course)
 
     elif args[1] == 'status':
         statusEvaluator(tasks)
 
 def statusEvaluator(tasks):
     f = open('list.txt', 'r')
-    w = f.read()
+    w = json.loads(f.read())
     f.close()
-    print(w)
+    
+    print("\nStatus: ")
+    print("----------------")
+    
+    for key, value in w.items():
+        if value == 1:
+            value = "Completed"
+        else:
+            value = "Not Completed"
+        print(key, ": ", value)
 
 
 
@@ -69,6 +84,7 @@ def completed(tasks, arg):
         f = open('list.txt', 'w')
         f.write(json.dumps(tasks))
         f.close
+        
         print(arg + ' Completed Successfully')
 
 
