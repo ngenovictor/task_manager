@@ -12,7 +12,7 @@ def main(args):
     :return:
     '''
 
-    actions = ['tasks', 'status', 'completed', 'partDone']
+    action = ['jobs', 'status', 'completed', 'partDone']
     # try:
     #     with contextlib.closing(shelve.open(data, 'c')) as data:
     #         tasks = data['tasklist']
@@ -30,17 +30,12 @@ def main(args):
               'Where taskname is the particular task.\n\n'
               '        Action is the command (status, or % complete)')
         return None
-    elif len(args) == 2 and args[1] in actions:
+    elif len(args) == 2 and args[1] in action:
         actions(tasks, args)
 
-    elif len(args) == 2 and args[1] in tasknames :
+    elif len(args) == 3 and args[1] in tasknames and args[2] in action:
+        taskevaluator(tasks, args)
 
-        taskevaluator(args)
-
-        print('Usage Error.\n\n'
-              'Usage: CurrentWeatherrr.py city\n'
-              'Where city is the town you would like to get the current weather conditions.')
-        return 'Help'
 
 def taskevaluator(args):
     '''
@@ -54,11 +49,26 @@ def actions(tasks, args):
     :param argument:
     :return:
     '''
-    if args[2] == 'tasks':
-        print(tasks[args.keys()])
+    if args[1] == 'jobs':
+        print(tasks.keys())
 
-    elif args[2] == 'status':
-        print(tasks[args])
+    elif args[1] == 'status':
+        print(statusEvaluator(tasks))
+    elif args[2] == 'completed':
+        completed(tasks, args[1])
+
+def statusEvaluator(tasks):
+
+    for value in tasks.values():
+        i = 0
+        if value == 1:
+            i += 1
+    print('{} Tasks out {} Completed!'.format(i, len(tasks.values())
+
+def completed(tasks, arg):
+        tasks[arg] = 1
+        print(arg + 'Completed Successfully')
+        pass
 
 
 
