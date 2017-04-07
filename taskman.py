@@ -23,11 +23,12 @@ def main(args):
 
     tasks = {'Version Control': 0, 'Agile Methodology': 0, 'Programming Logic': 0}
     tasknames = tasks.keys()
-
-    if len(args) == 1 and args[0] == 'taskman.py' and args[1] == '-h':
+    if len(args) == 1 and args[0] == 'taskman.py':
+        print('Usage Error. Missing Arguments')
+    elif len(args) == 2 and args[0] == 'taskman.py' and args[1] == '-h':
         print('Usage: taskman.py taskname action\n\n'
               'Where taskname is the particular task.\n\n'
-              '        Action is the command (status, or % complete)')
+              '        Action is the command (status, not completed, complete)')
     elif len(args) == 2 and args[1] in action:
         actions(tasks, args)
 
